@@ -1,4 +1,11 @@
 class ReportController < ApplicationController
+  # Reivew
+  # - Me parece bien la implementación usando el ROW_NUMBER
+  # - No me queda claro si la implementación correcta era utilizando el SUM(purchase_items.quantity)
+  # - Bien al agregarle filtros y el uso de la columna date.
+  # - Mejor si se hubiése implementado
+  #   * strong_params.
+  #   * indices respecto a fechas y/ índices compuestos.
   def most_sold_product
     inner_query = Purchase
       .select('
