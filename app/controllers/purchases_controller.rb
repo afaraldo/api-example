@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
   # GET /purchases
   def index
     @q = Purchase.ransack(params[:q])
-    @purchases = @q.result(distinct: true).page(params[:page])
+    @purchases = @q.result(distinct: true).page(params[:page]).per(params[:per_page] || 10)
 
     render json: @purchases
   end
@@ -48,5 +48,9 @@ class PurchasesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def purchase_params
       params.require(:purchase).permit(:date, :number, purchase_items: [:id, :product_id, :purchase_id])
+    end
+
+    def filter_params
+      params.require(:q).permit(:date, :number, :page, :per_page)
     end
 end

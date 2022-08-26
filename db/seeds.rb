@@ -20,10 +20,10 @@ end
 
 Product.all.each do |product|
     5.times do |i|
-        number ||= Purchase.last.try(:number) | 1 # Set last number used in Purchase
+        number = Purchase.last.try(:number) || 0 # Set last number used in Purchase
         Purchase.create(
-            date: Time.now,
-            number: number,
+            date: rand(10).days.ago,
+            number: number + 1,
             purchase_items_attributes: [
                 {
                     quantity: 1 + rand(10),
