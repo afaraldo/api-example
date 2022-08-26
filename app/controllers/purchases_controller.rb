@@ -1,6 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :set_purchase, only: %i[show update destroy]
 
+  # Review:
+  # - Bien con la paginación
+  # - Ransack cumple
+  # - Mejor si hubiéses implementado strong params
   # GET /purchases
   def index
     @q = Purchase.ransack(params[:q])
