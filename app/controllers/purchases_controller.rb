@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-  before_action :set_purchase, only: %i[ show update destroy ]
+  before_action :set_purchase, only: %i[show update destroy]
 
   # GET /purchases
   def index
@@ -40,17 +40,14 @@ class PurchasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_purchase
-      @purchase = Purchase.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def purchase_params
-      params.require(:purchase).permit(:date, :number, purchase_items: [:id, :product_id, :purchase_id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_purchase
+    @purchase = Purchase.find(params[:id])
+  end
 
-    def filter_params
-      params.require(:q).permit(:date, :number, :page, :per_page)
-    end
+  # Only allow a list of trusted parameters through.
+  def purchase_params
+    params.require(:purchase).permit(:date, :number, purchase_items: %i[id product_id purchase_id])
+  end
 end

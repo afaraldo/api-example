@@ -7,29 +7,27 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 5.times do |i|
-    Category.find_or_create_by!(name: "Categoria##{i}")
+  Category.find_or_create_by!(name: "Categoria##{i}")
 end
 
 Category.all.each do |category|
-    5.times do |i|
-        Product.find_or_create_by!(name: "Producto##{i}", category_id: category.id)
-    end
+  5.times do |i|
+    Product.find_or_create_by!(name: "Producto##{i}", category_id: category.id)
+  end
 end
 
-
-
 Product.all.each do |product|
-    5.times do |i|
-        number = Purchase.last.try(:number) || 0 # Set last number used in Purchase
-        Purchase.create(
-            date: rand(10).days.ago,
-            number: number + 1,
-            purchase_items_attributes: [
-                {
-                    quantity: 1 + rand(10),
-                    product: product
-                }
-            ]
-        )
-    end
+  5.times do
+    number = Purchase.last.try(:number) || 0 # Set last number used in Purchase
+    Purchase.create(
+      date: rand(1..20).days.ago,
+      number: number + 1,
+      purchase_items_attributes: [
+        {
+          quantity: rand(1..10),
+          product: product
+        }
+      ]
+    )
+  end
 end

@@ -35,7 +35,7 @@ rails s
 
 * Test
 
-1) curl "http://localhost:3000/report/most_sold_product"
+1) curl -g "http://localhost:3000/report/most_sold_product"
 
 Should return the three most sold products by category
 
