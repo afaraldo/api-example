@@ -5,6 +5,7 @@ AllCops:
     - 'db/migrate/*'
     - 'db/schema.rb'
     - 'test/**/*'
+    - 'app/controllers/report_controller.rb'
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/StringLiterals:

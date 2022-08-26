@@ -57,6 +57,10 @@ Should return the three most sold products by category
     {"product_name":"Producto#2","category_name":"Categoria#4","total":54,"rank":3,"id":null}
 ]
 
+1.1 ) curl -g "http://localhost:3000/report/most_sold_product?product_id=2"
+1.2 ) curl -g "http://localhost:3000/report/most_sold_product?category_id=2"
+1.3 ) curl -g "http://localhost:3000/report/most_sold_product?date_lteq=2022-08-18&date_gteq=2022-08-19"
+
 2) curl -g "http://localhost:3000/purchases?q[date_gteq]=2022-08-18&q[date_lteq]=2022-08-19"
 
 [

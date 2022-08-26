@@ -10,9 +10,11 @@
   Category.find_or_create_by!(name: "Categoria##{i}")
 end
 
+index = 0
 Category.all.each do |category|
-  5.times do |i|
-    Product.find_or_create_by!(name: "Producto##{i}", category_id: category.id)
+  5.times do
+    index += 1
+    Product.find_or_create_by!(name: "Producto##{index}", category_id: category.id)
   end
 end
 
